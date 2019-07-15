@@ -1,4 +1,3 @@
-import { User } from '../models/user.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -39,29 +38,29 @@ export class UserService {
     );
   }
   //POST method => create user
-  createUser(user): Observable<User> {
-    return this.http.post<User>(this.apiURL + '/user/add', user)
+  createUser(user): Observable<any> {
+    return this.http.post<any>(this.apiURL + '/user/add', user)
   }
   //PUT method => update user
-  updateUser(id, user): Observable<User> {
-    return this.http.put<User>(this.apiURL + '/user/update/' + id, user).pipe(
+  updateUser(id, user): Observable<any> {
+    return this.http.put<any>(this.apiURL + '/user/update/' + id, user).pipe(
       tap(res => console.log(res),
-        catchError(error => of(new User))
+        catchError(error => of([]))
       ));
   }
 
   // Search with param nickname  
 
-  searchByUserName(name): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiURL}/user?nickname_like=${name}`).pipe(
+  searchByUserName(name): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiURL}/user?nickname_like=${name}`).pipe(
       tap(res => console.log(res)),
       catchError(err => of([]))
     )
   }
 
   // Search with param nickname  
-  searchByserEmail(email): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiURL}/user?email_like=${email}`).pipe(
+  searchByserEmail(email): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiURL}/user?email_like=${email}`).pipe(
       tap(res => res),
       catchError(err => of([]))
     )

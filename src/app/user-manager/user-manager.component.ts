@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, Input } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder, FormArray } from "@angular/forms";
 import { UserService } from '../service/user.service';
-import { User } from '../models/user.model'
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../service/authentication.service';
@@ -12,8 +11,8 @@ import { AuthenticationService } from '../service/authentication.service';
 })
 export class UserManagerComponent implements OnInit {
 
-  users: User[] = [];
-  usersTemp: User[] = [];
+  users: any[] = [];
+  usersTemp: any[] = [];
   previous: any = [];
   headElements: any = ['#', 'Full name', 'User name', 'Roles', 'Action']
   config = {
@@ -23,7 +22,7 @@ export class UserManagerComponent implements OnInit {
     totalItems: 0
   };
   dict = {};
-  selectedUser: User;
+  selectedUser: any;
   formEdit: FormGroup;
   formAdd: FormGroup;
   idUser: any;
