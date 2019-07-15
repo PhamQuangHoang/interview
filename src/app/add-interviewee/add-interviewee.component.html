@@ -9,7 +9,7 @@
     <div class="row z-depth-1 pl-4 z-index-2">
       <div class="col-md-5 mt-5 p-0 ">
         <div class="w-100 h-100 d-flex justify-content-center align-items-center center-mb">
-            <app-image-upload [existImgUrl]="avatar" class="z-index-99"></app-image-upload>
+          <app-image-upload [existImgUrl]="avatar" class="z-index-99"></app-image-upload>
         </div>
       </div>
       <div class="col-md-1 d-md-none d-lg-block">
@@ -48,12 +48,12 @@
                   <label for="birthday" class="d-flex justify-content-around align-items-center mt-1 ">
                     <input type="text" formControlName="birthday" class="ML-2" [dateFormat]="'d/m/Y'" mwlFlatpickr
                       id="birthday" disableMobile=true placeholder="dd/mm/yyy">
-                      <div *ngFor="let validation of add_validation_messages.birthday">
-                        <mdb-error
-                          *ngIf=" (formAdd.get('birthday').hasError(validation.type) && (formAdd.get('birthday').touched)) || (formAdd.get('birthday').hasError(validation.type) && submited)">
-                          {{validation.message}}
-                        </mdb-error>
-                      </div>
+                    <div *ngFor="let validation of add_validation_messages.birthday">
+                      <mdb-error
+                        *ngIf=" (formAdd.get('birthday').hasError(validation.type) && (formAdd.get('birthday').touched)) || (formAdd.get('birthday').hasError(validation.type) && submited)">
+                        {{validation.message}}
+                      </mdb-error>
+                    </div>
                     <mdb-icon far icon="calendar-plus" class="text-primary icon" size="md">
                     </mdb-icon>
                   </label>
@@ -76,7 +76,7 @@
                     value="female">
                   <label class="custom-control-label" for="female">Female</label>
                 </div>
-                <div  *ngFor="let validation of add_validation_messages.gender">
+                <div *ngFor="let validation of add_validation_messages.gender">
                   <mdb-error
                     *ngIf=" (formAdd.get('gender').hasError(validation.type) && (formAdd.get('gender').touched)) || (formAdd.get('gender').hasError(validation.type) && submited)">
                     {{validation.message}}
@@ -91,7 +91,7 @@
               <div class="file-box col-9">
                 <div class="file-upload-wrapper" [attr.data-text]="filesName">
                   <input alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)" [(fileModel)]="files"
-                    [(rawFileModel)]="rawFiles" type="file" class="file-upload-field"
+                    type="file" class="file-upload-field"
                     accept="application/msword, application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, image/*">
                 </div>
               </div>
@@ -143,8 +143,8 @@
               <label for="email" class="col-form-label title col-3">Email:</label>
               <div class="col-9">
                 <div class="md-form mt-0 ">
-                  <input mdbInput type="text" formControlName="email" class="form-control text-md mt-3"
-                    id="email" placeholder="Email">
+                  <input mdbInput type="text" formControlName="email" class="form-control text-md mt-3" id="email"
+                    placeholder="Email">
                   <div *ngFor="let validation of add_validation_messages.email">
                     <mdb-error
                       *ngIf="(formAdd.get('email').hasError(validation.type) && (formAdd.get('email').touched))  || (formAdd.get('email').hasError(validation.type) && submited)">
@@ -178,12 +178,12 @@
                     <input type="text" formControlName="timeInterview" mwlFlatpickr id="date_schedule"
                       [dateFormat]="'d/m/Y H:i'" [enableTime]="true" disableMobile=true class="ml-2"
                       placeholder="dd/mm/YYY H:i">
-                      <div *ngFor="let validation of add_validation_messages.timeInterview">
-                        <mdb-error
-                          *ngIf=" (formAdd.get('timeInterview').hasError(validation.type) && (formAdd.get('timeInterview').touched)) || (formAdd.get('timeInterview').hasError(validation.type) && submited)">
-                          {{validation.message}}
-                        </mdb-error>
-                      </div>
+                    <div *ngFor="let validation of add_validation_messages.timeInterview">
+                      <mdb-error
+                        *ngIf=" (formAdd.get('timeInterview').hasError(validation.type) && (formAdd.get('timeInterview').touched)) || (formAdd.get('timeInterview').hasError(validation.type) && submited)">
+                        {{validation.message}}
+                      </mdb-error>
+                    </div>
                     <mdb-icon far icon="calendar-plus" class="text-primary icon" size="md">
                     </mdb-icon>
                   </label>
@@ -226,7 +226,7 @@
       </div>
       <!-- row 3 -->
       <!-- row 4 -->
-      
+
       <!-- row 4 -->
       <!-- Action  [disabled]="!formAdd.valid" -->
       <div class="row w-100 justify-content-center mb-5">

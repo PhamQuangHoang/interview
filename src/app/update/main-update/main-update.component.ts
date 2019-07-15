@@ -71,8 +71,6 @@ export class MainUpdateComponent implements OnInit {
     this.formUpdate.valueChanges.subscribe((data) => {
       this.emitEvent();
     });
-
-
   }
 
 
