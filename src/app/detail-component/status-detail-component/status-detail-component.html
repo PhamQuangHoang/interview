@@ -1,0 +1,4 @@
+<mdb-badge class="m-2 p-2 status-badge " 
+[ngClass]="status === 'ON_HOLD' ? 'warning-color' : status === 'PASSED' ? 'success-color' : status === 'FAILED' ? 'danger-color' :  status === 'INCOMING' ? 'info-color' : 'default-color'"
+  mdbWavesEffect>{{statusText}}
+</mdb-badge>

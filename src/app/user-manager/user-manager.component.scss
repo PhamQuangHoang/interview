@@ -1,0 +1,155 @@
+$search-background: #4a58ff;
+$text-color: #f8f8f9;
+$count-color: #c7a05e;
+$input-btn-focus-box-shadow: none;
+$font-size-md: 1rem;
+$font-size-md-mb: 0.8rem;
+$font-size-lg: 1.2rem;
+$bg-color: #f8f8f9;
+.jumbotron {
+  background-color: #4a58ff;
+  color: white;
+}
+.tablebody tr:hover {
+  background-color: #e0e0eb;
+}
+.icon-edit-table:hover {
+  cursor: pointer;
+  color: #25de8c;
+}
+.icon-delete-table:hover {
+  cursor: pointer;
+  color: red;
+}
+.modal-header {
+  font-weight: bolder;
+}
+
+.button-accept {
+  background-color: #25de8c;
+  color: white;
+}
+
+.button-delete {
+  background-color: red;
+  color: white;
+}
+
+.table-add:hover {
+  color: #25de8c;
+  cursor: pointer;
+}
+.font-weight-800 {
+  font-weight: 800;
+}
+
+.text-sm {
+  font-size: 0.6rem;
+  color: red;
+}
+.text-md {
+  font-size: 1rem !important;
+}
+.checkGroup {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 1em;
+  padding: 40px;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    background-color: #cccccc;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  // custom checkbox
+  .checkbox {
+    position: relative;
+    height: 42px;
+    width: 210px;
+    border: none;
+    background: white;
+    label {
+      width: 210px;
+      height: 42px;
+      cursor: pointer;
+      font-size: $font-size-md-mb;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+      input[type="checkbox"] {
+        position: relative;
+        width: 22px;
+        height: 22px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        outline: none;
+        border: none;
+        transition: 0.5s;
+        cursor: pointer;
+        &:before {
+          content: "";
+          position: absolute;
+        
+          width: 100%;
+          height: 100%;
+          border: 2px solid #8a8a8a;
+          border-radius: 2px;
+          box-sizing: border-box;
+          transition: 0.3s;
+        }
+        &:checked {
+          background-color: transparent;
+          color: transparent;
+        }
+        &:checked:before {
+          right: 20px !important;
+          border-left: none;
+          border-top: none;
+          width: 12px;
+          top: -12px;
+          border-width: 2.5px;
+          border-color: #4285f4;
+          transform: rotate(40deg) translate(15px, -10px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .table-user {
+    overflow-x: auto;
+  }
+}
+@media screen and (max-width: 480px) {
+  .checkGroup {
+    grid-column-gap: 20px;
+    padding: 40px 10px 10px 10px;
+    .checkbox {
+      width: 130px;
+      label {
+        width: 130px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 320px) {
+  .checkGroup {
+    grid-column-gap: 10px;
+    padding: 40px 0px 10px 0px;
+    .checkbox {
+      width: 100px;
+      label {
+        width: 100;
+      }
+    }
+  }
+}

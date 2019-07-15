@@ -1,0 +1,38 @@
+<div class="search-container d-flex justify-content-center align-items-center flex-column">
+  <div class="bg-left"></div>
+  <div class="bg-right"></div>
+  <div class="search-title ">
+    <h4 class="h4-responsive text-center">Search something cool here !!!</h4>
+  </div>
+  <div class="search-box w-100 d-flex flex-column justify-content-center align-items-center">
+    <!-- Search form -->
+    <form class="form-inline md-form form-sm active-purple-2 d-flex justify-content-center">
+      <div class="search-form d-flex justify-content-center flex-row-reverse align-items-center">
+        <div class="result-count pr-4 pb-1"><span class="font-weight-bold">{{countInterviewee}}</span> results</div>
+        <input class="form-control form-control-sm" (keyup.enter)="search();" (keyup)="fullname = $event.target.value"
+          type="text" placeholder="Hit enter for search" aria-label="Search" mdbInput>
+        <span class="btn-search d-flex justify-content-center align-items-center mb-xl-2 mr-1" (click)="search();">
+          <mdb-icon fas icon="search" class="indigo-text pr-3  w-100 search" size="md"></mdb-icon>
+        </span>
+      </div>
+    </form>
+    <div class="search-result d-flex justify-content-around align-items-center">
+
+      <blockquote class="blockquote bq-muted">
+        <span class="bq-title text-center">{{ countIncoming }}</span>&emsp; Incoming
+      </blockquote>
+      <div [hidden]="role">
+        <button mdbBtn type="button" size="sm"
+          class="mb-4 px-2 no-break-line font-weight-bold btn-addnew d-flex justify-content-center align-items-center"
+          outline="true" color="white" routerLink="./add" mdbWavesEffect>
+          <mdb-icon fas icon="plus-circle" class="mr-1" size="md"></mdb-icon><span>add new</span>
+        </button>
+      </div>
+      <button mdbBtn type="button" size="sm" (click)="toogleFilter();"
+        class=" btn-filter font-weight-bold no-break-line mb-4 px-2 d-flex justify-content-center align-items-center"
+        color="white" mdbWavesEffect>
+        <mdb-icon fas icon="filter" class="mr-1" size="sm"></mdb-icon> <span>filter</span>
+      </button>
+    </div>
+  </div>
+</div>

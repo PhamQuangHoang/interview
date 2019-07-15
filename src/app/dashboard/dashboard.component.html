@@ -1,0 +1,80 @@
+<app-search #search [countInterviewee]="listInterviewee.config.totalItems"
+    [countIncoming]="listInterviewee.countIncoming"></app-search>
+<div class="container">
+    <div class="row interview-list-container" style="min-height: 100vh">
+        <div class="col-sm-12 col-md-12 col-lg-9 mx-auto p-0 interviewee-list "
+            [class.interviewee-list-active]="search.isFilter ? true : false">
+            <app-list-interviewee #listInterviewee></app-list-interviewee>
+        </div>
+        <!-- Form filter start -->
+        <!-- put inside div below *ngIf="listInterviewee.listInterviewee" -->
+        <div class="col-sm-12 col-md-12 col-lg-3 w-100 p-0  
+        filter-container d-flex justify-content-center align-items-start "
+            [class.filter-active]="search.isFilter ? true : false" *ngIf="listInterviewee.listInterviewee">
+            <div class=" row justify-content-center w-100 ml-lg-2">
+                <form [formGroup]="formFilter">
+                    <div class="form-filter  d-flex flex-column "
+                        (swipeRight)=" swipe($event.type); search.isFilter=false;" (swipeUp)="search.isFilter=false;">
+                        <div class="scrollme d-none" (click)="search.isFilter = false;">
+                            <mdb-icon far icon="arrow-alt-circle-right" size="lg"></mdb-icon>
+                            <!-- <div class="mousey">
+                                <div class="scroller"></div>
+                            </div> -->
+                        </div>
+                        <h4 class=" text-center font-weight-bold d-none text-head text-muted mt-4">Advanced search</h4>
+                        <div class="filter-wrap season-filter my-3">
+                            <h6 class="h6-responsive font-weight-bold pb-3 ">Position filter
+                            </h6>
+                            <div class="checkbox mt-1 p-0" *ngFor="let pos of posArray.controls;let i = index;">
+                                <label for="posCheckbox{{i}}"
+                                    class="d-flex justify-content-between align-items-center px-2">
+                                    <span>{{positionList[i].item_text}}</span>
+                                    <input [formControl]="pos" (change)="getSelectedPos()" id="posCheckbox{{i}}"
+                                        type="checkbox">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="filter-wrap status-filter my-3">
+                            <h6 class="h6-responsive font-weight-bold pb-3 	">Status filter
+                            </h6>
+                            <div class="checkbox mt-1 p-0" *ngFor="let status of statusArray.controls;let i = index;">
+                                <label for="statusCheckbox{{i}}"
+                                    class="d-flex justify-content-between align-items-center px-2 custom-checkbox">
+                                    <span
+                                        [ngClass]="statusList[i].item_text == 'PASSED' ? 'text-success' : statusList[i].item_text == 'ON HOLD' ? 'text-warning' : statusList[i].item_text == 'FAILED' ? 'text-danger' : statusList[i].item_text === 'INCOMING' ? 'text-info' : 'text-default' ">{{statusList[i].item_text}}</span>
+                                    <input id="statusCheckbox{{i}}" [formControl]="status"
+                                        (change)="getSelectedStatus();" type="checkbox">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="filter-wrap date-filter my-3">
+                            <h6 class="h6-responsive font-weight-bold pb-3 ">Date filter
+                            </h6>
+                            <div class="date-picker d-flex justify-content-center align-items-center">
+                                <label for="date-itv" class="d-flex justify-content-around align-items-center mt-1">
+                                    <input formControlName="dateRange" type="text" mwlFlatpickr id="date-itv"
+                                        mode="range">
+                                    <input type="text" class="w-100" placeholder="dd/mm/yyyy"
+                                        formControlName="dateShow">
+                                </label>
+                                <mdb-icon fas icon="times" class="text-danger mx-1 rm-icon" size="md" *ngIf="dateFrom"
+                                    (click)="removeDateValue(); "></mdb-icon>
+                            </div>
+                        </div>
+                        <div class="filter-wrap my-auto d-flex justify-content-center mb-5">
+                            <button type="button" mdbBtn (click)="doFilter()" size="sm"
+                                class="btn-PC mb-5 font-weight-bold" color="primary" mdbWavesEffect>Filter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Form filter end -->
+    </div>
+</div>
+<div class="overlay-top" [ngClass]="{'z-index-negative' : !search.isFilter , 'z-index-positive' : search.isFilter}"
+    (click)="search.isFilter = false"></div>
+<div class="overlay"></div>
+<!-- <div class="radiobtn d-flex align-items-center mt-1">
+    <label for="Fail"> <input class="" type="radio" id="Fail" formControlName="type" value="Fail" />Fail</label>
+</div> -->

@@ -1,0 +1,55 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-sm z-depth-0 navbar-dark indigo accent-4" [containerInside]="true">
+  <!-- Navbar brand -->
+  <mdb-navbar-brand class="w-75">
+    <a [routerLink]="['']" class="navbar-brand">
+      <img src="..\..\..\assets\image\logo.png" class="img-fluid w-50" />
+    </a>
+  </mdb-navbar-brand>
+  <!-- Collapsible content -->
+  <links>
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link waves-light" [routerLink]="['../dashboard']" mdbWavesEffect>
+          <mdb-icon fas icon="home" class="d-inline"></mdb-icon>
+          <span class="d-inline">Home</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <!--
+      <li class="nav-item">
+        <a class="nav-link waves-light " [routerLink]="['../dashboard/user']" mdbWavesEffect>
+          <mdb-icon fas icon="users" class="d-inline"></mdb-icon>
+          <span class="d-inline">User</span>
+        </a>
+      </li>
+      -->
+      <!-- Dropdown -->
+      <li [hidden]="role" class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <mdb-icon fas icon="users" class="d-inline"></mdb-icon> Manage<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['../dashboard/user']">Users</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['../dashboard/logs']">Logs</a>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a  style="cursor: default;" class="nav-link waves-light " mdbWavesEffect>
+          <mdb-icon fas icon="user" class="d-inline"></mdb-icon>
+          <span class="text-ellipsis" style="white-space: nowrap">{{fullname}}</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a (click)="logout()" class="nav-link waves-light" mdbWavesEffect>
+        <mdb-icon fas icon="sign-in-alt" class="d-inline" ></mdb-icon>
+        <span class="d-inline">Logout</span>
+        </a>
+      </li>
+    </ul>
+    <!-- Links -->
+  </links>
+  <!-- Collapsible content -->
+</mdb-navbar>

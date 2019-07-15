@@ -1,0 +1,262 @@
+<div class="top-wrapper">
+  <div class="bg-left"></div>
+  <div class="bg-right"></div>
+</div>
+<div class="container card-xs-container">
+  <!--Grid row-->
+  <ng-container>
+    <div class="row mb-5 mt-150-negative  justify-content-center">
+      <!--Grid column-->
+      <div class="col-12 col-xl-10 mx-auto">
+        <mdb-card class="interviewee-details">
+          <app-card-top></app-card-top>
+          
+          <app-status-component></app-status-component>
+          
+          <div class="row mt-5 pl-3 justify-content-center">
+
+            <div class="col-md-6">
+              <div class="col-12 d-flex justify-content-start mt-line">
+                <h6 class="font-weight-bold my-3 text-heading">Interviewee Information</h6>
+              </div>
+              <div class="col-12 justify-content-start">
+                <div class="row">
+                  <div class="col-1 col-sm-4 col-md-4 col-lg-4 col-xs-4 d-flex flex-row">
+                    <div class="mr-2 d-flex flex-row justify-content-center align-items-center ico">
+                      <mdb-icon fas icon="birthday-cake" class="m-auto" size="md"></mdb-icon>
+                    </div>
+                    <span class="text-nowrap d-none d-sm-block font-weight-bolder">Date of Birth :</span>
+                  </div>
+                  <div class="col ">
+                    {{itv.birthday}}
+                  </div>
+                </div>
+                <div class="row my-2">
+
+                  <div class="col-1 col-sm-4 col-md-4 col-lg-4 col-xs-4 d-flex flex-row">
+                    <div class="mr-2 d-flex flex-row justify-content-center align-items-center ico">
+                      <mdb-icon fas icon="transgender" size="md"></mdb-icon>
+                    </div>
+                    <span class="text-nowrap d-none d-sm-block font-weight-bolder">Gender :</span>
+                  </div>
+                  <div class="col " *ngIf="itv.gender">
+                    Female
+                  </div>
+                  <div class="col " *ngIf="!itv.gender">
+                    Male
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-1 col-sm-4 col-md-4 col-lg-4 col-xs-4 d-flex flex-row">
+                    <div class="mr-2 d-flex flex-row justify-content-center align-items-center ico">
+                      <mdb-icon fas icon="paperclip" size="md" class="m-auto"></mdb-icon>
+                    </div>
+                    <span class="d-none d-sm-block font-weight-bolder">CV :</span>
+                  </div>
+                  <div class="col ">
+                    <span *ngIf="!itv.cv">Don't have CV</span>
+                    <a class="font-weight-bold" style="color: #0008ff; text-decoration: underline" mdbTooltip="Download this file" (click)="downloadFile(itv.id, itv.cv)">{{itv.cv}}</a>
+                    <!--
+                    <mdb-icon id="download_button" mdbTooltip="Download this file"
+                      (click)="downloadFile(itv.id, itv.cv)" *ngIf="itv.cv" fas icon="download mr-1" size="lg">
+                    </mdb-icon>
+                    -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="col-12 d-flex justify-content-start mt-line">
+                <h6 class="font-weight-bold my-3 text-heading">Interviewee contact</h6>
+              </div>
+              <div class="col-12 justify-content-start ">
+                <div class="row">
+
+                  <div class="col-1 col-sm-4 col-md-4 col-lg-4 col-xs-4 d-flex flex-row">
+                    <div class="mr-2 d-flex flex-row justify-content-center align-items-center ico">
+                      <mdb-icon fas icon="map-marked-alt" size="md"></mdb-icon>
+                    </div>
+                    <span class="text-nowrap d-none d-sm-block font-weight-bolder">Address :</span>
+                  </div>
+                  <div class="col ">
+                    {{itv.address}}
+                  </div>
+                </div>
+                <div class="row my-2">
+
+                  <div class="col-1 col-sm-4 col-md-4 col-lg-4 col-xs-4 d-flex flex-row">
+                    <div class="mr-2 d-flex flex-row justify-content-center align-items-center ico">
+                      <mdb-icon fas icon="mobile-alt" size="md"></mdb-icon>
+                    </div>
+                    <span class="text-nowrap d-none d-sm-block font-weight-bolder">Phone call :</span>
+                  </div>
+                  <div class="col ">
+                    {{itv.phone_number}}
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-1 col-sm-4 col-md-4 col-lg-4 col-xs-4 d-flex flex-row">
+                    <div class="mr-2 d-flex flex-row justify-content-center align-items-center ico">
+                      <mdb-icon fas icon="envelope" size="md"></mdb-icon>
+                    </div>
+                    <span class="text-nowrap d-none d-sm-block font-weight-bolder">Email :</span>
+                  </div>
+                  <div class="col-8 ">
+                    {{itv.email}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Interviwee information end -->
+          </div>
+          <!-- End row 1 -->
+          <div class="row mt-3 pl-3 justify-content-center">
+            <div class="col-md-6">
+              <div class="row px-3">
+                <div class="col-12 d-flex justify-content-start mt-line">
+                  <h6 class="font-weight-bold my-3 text-heading">Techniques :</h6>
+                </div>
+                <div class="col-12 ">
+                  <ng-container *ngFor="let tech of techniques">
+                    <div *ngIf="tech" class="col-6 level-attach d-flex align-items-start py-2">
+                      <span class="techniques-name"><i class="fas fa-caret-right"></i>&nbsp; {{tech}}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row px-3">
+                <div class="col-12 d-flex justify-content-start mt-line">
+                  <h6 class="font-weight-bold my-3 text-heading ">Task sheduler</h6>
+                </div>
+              </div>
+              <div class="col-12 justify-content-start ">
+                <div class="row">
+                  <div class="col-1 col-sm-4 col-md-4 col-lg-4 col-xs-4 d-flex flex-row">
+                    <div class="mr-2 d-flex flex-row justify-content-center align-items-center ico">
+                      <mdb-icon far icon="clock" class="m-auto" size="sm"></mdb-icon>
+                    </div>
+                    <span class="text-nowrap d-none d-sm-block font-weight-bolder">Time interview :</span>
+                  </div>
+                  <div class="col ">
+                    {{toDate(itv.time_interview)}}
+                  </div>
+                </div>
+                <div class="row my-2">
+                  <div class="col-1 col-sm-4 col-md-4 col-lg-4 col-xs-4 d-flex flex-row">
+                    <div class="mr-2 d-flex flex-row justify-content-center align-items-center ico">
+                      <mdb-icon fas icon="map-marker-alt" class="m-auto" size="md"></mdb-icon>
+                    </div>
+                    <span class="text-nowrap d-none d-sm-block font-weight-bolder">Place :</span>
+                  </div>
+                  <div class="col ">
+                    {{itv.place_interview}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-1 col-sm-4 col-md-4 col-lg-4 col-xs-4 d-flex flex-row">
+                    <div class="mr-2 d-flex flex-row justify-content-center align-items-center ico">
+                      <mdb-icon fab icon="adn" class="m-auto" size="sm"></mdb-icon>
+                    </div>
+                    <span class="text-nowrap d-none d-sm-block font-weight-bolder">Position apply :</span>
+                  </div>
+                  <div class="col ">
+                    {{itv.position.name}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row my-3 pl-3">
+            <div class="col-md-6">
+              <div class="col-12 my-2 d-flex mt-line">
+                <h6 class="font-weight-bold my-3 text-center text-heading">Interviewer's Note</h6>
+              </div>
+              <div class="col-12 justify-content-start ">
+                <div class="row">
+
+                  <div class="col-1 d-flex flex-row">
+                    <div class="mr-2 d-flex flex-row justify-content-center align-items-center ico">
+                      <mdb-icon far icon="comment" size="md"></mdb-icon>
+                    </div>
+                  </div>
+                  <div class="col ">
+                    {{itv.interviewerNote || 'Not set yet'}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="col-12 my-2 d-flex mt-line">
+                <h6 class="font-weight-bold my-3 text-center text-heading">Director's Note</h6>
+              </div>
+              <div class="col-12 justify-content-start ">
+                <div class="row">
+
+                  <div class="col-1 d-flex flex-row">
+                    <div class="mr-2 d-flex flex-row justify-content-center align-items-center ico">
+                      <mdb-icon far icon="comment" size="md"></mdb-icon>
+                    </div>
+                  </div>
+                  <div class="col ">
+                    {{itv.directorNote || 'Not set yet'}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center mt-5">
+            <button size="lg" mdbBtn type="button" color="success" routerLink="{{update_url}}"
+               mdbWavesEffect>
+              <mdb-icon  far icon="edit"></mdb-icon>
+            </button>
+
+            <button size="lg" mdbBtn type="button" color="danger" (click)="deleteModal.show();" mdbWavesEffect>
+              <mdb-icon far icon="trash-alt" ></mdb-icon>
+            </button>
+          </div>
+          <div mdbModal #deleteModal="mdbModal" class="modal fade" id="thu2" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notify modal-danger" role="document">
+              <!--Content-->
+              <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                  <p class="heading lead">Do you want delete?</p>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                  <div class="text-center">
+                    <i class="fas fa-times fa-4x"></i>
+
+                  </div>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+
+                  <a type="button" mdbBtn color="danger" class="waves-effect button4" mdbWavesEffect
+                    (click)="deleteInterviewee(deleteModal);" data-dismiss="modal">Yes</a>
+                  <a type="button" mdbBtn color="danger" class="waves-effect button4" mdbWavesEffect
+                    (click)="deleteModal.hide()" data-dismiss="modal">No</a>
+                </div>
+              </div>
+              <!--/.Content-->
+            </div>
+          </div>
+          <!-- Information main -->
+          <mdb-card-body>
+          </mdb-card-body>
+          <!-- Information main -->
+        </mdb-card>
+      </div>
+    </div>
+
+  </ng-container>
+  <!--Grid row-->
+</div>

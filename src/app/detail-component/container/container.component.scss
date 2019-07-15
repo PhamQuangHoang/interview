@@ -1,0 +1,483 @@
+$bg-color: #f8f8f9;
+$color-success: #25de8c;
+$top-background: #4a58ff;
+$tag-bg: #eff2f7;
+$tag-bg-hover: #bdbfc4;
+$text-smoke-color: #b7c2cf;
+$text-smoke-hover: #e0e0e0;
+$text-title-color: hsl(218, 10%, 65%);
+$text-content-color: #42505f;
+$text-name-size: 2rem;
+$text-name-size-1: 1.5rem;
+$font-size-lg: 1rem;
+$font-size-lg-1: 1.1rem;
+$font-size-lg-2: 0.8rem;
+$font-size-md: 0.9rem;
+$font-size-sm-1: 0.5rem;
+$font-size-sm: 0.7rem;
+
+#download_button:hover {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1350px;
+}
+
+* {
+  font-size: $font-size-md;
+}
+
+.mt-150-negative {
+  margin-top: -150px;
+}
+
+.w-60 {
+  width: 60% !important;
+}
+
+.ico {
+  min-width: 13px;
+}
+
+.text-content {
+  font-size: $font-size-md !important;
+}
+
+.top-wrapper {
+  min-height: 150px;
+}
+
+.top-wrapper {
+  min-height: 250px;
+  width: 100%;
+  background: $top-background;
+
+  .bg-left {
+    box-sizing: content-box;
+    width: 212px;
+    height: 200px;
+    position: absolute;
+    top: 10vh;
+    left: 0%;
+    background: url(../../../assets/image/left-blob.svg) no-repeat;
+    object-fit: cover;
+    background-size: cover;
+    z-index: 0;
+  }
+
+  .bg-right {
+    width: 221.18px;
+    height: 191.48px;
+    object-fit: cover;
+    background: url(../../../assets/image/blob.svg) no-repeat;
+    position: absolute;
+    top: 10vh;
+    right: 30px;
+    z-index: 0;
+  }
+}
+
+.interviewee-details {
+  background: $bg-color;
+
+  // .card-top {
+  //   position: absolute;
+  //   top: 0;
+  //   width: 100%;
+  //   height: 250px;
+  //   background: url("https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg") center no-repeat;
+  //   background-size: cover;
+  //   -webkit-clip-path: polygon(0 0, 100% 0, 100% 73%, 0% 100%);
+  //   clip-path: polygon(0 0, 100% 0, 100% 73%, 0% 100%);
+  // }
+
+  // .avatar {
+  //   width: 210px;
+  //   height: 210px;
+  //   display: block;
+  //   position: relative;
+  //   margin: 100px 0px 20px 100px;
+
+  //   img {
+  //     width: 210px;
+  //     height: 210px;
+  //     object-fit: cover;
+  //   }
+  // }
+
+  .status-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: $font-size-md;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+  }
+
+  // .card-heading {
+  //   position: relative;
+  //   width: 100%;
+  //   height: 100%;
+  //   margin: -120px 0px 0px 0px;
+  //   padding: 0px 20px 0px 0px;
+
+  //   .heading-option {
+  //     .text-name {
+  //       font-size: $text-name-size;
+  //       font-style: normal;
+  //     }
+
+  //     .tag-container {
+  //       .tag {
+  //         background-color: $tag-bg;
+  //         width: auto;
+  //         height: 25px;
+  //         cursor: pointer;
+  //         padding-top: 5px;
+  //         position: relative;
+  //         transition: 0.5s;
+  //       }
+
+  //       .tag span {
+  //         text-transform: uppercase;
+  //         color: $text-smoke-color;
+  //         font-size: $font-size-sm;
+  //         margin: 0px 10px 0px 10px;
+  //         z-index: 1;
+  //       }
+
+  //       .tag::before {
+  //         content: "";
+  //         width: 100%;
+  //         height: 50%;
+  //         background: $tag-bg-hover;
+  //         display: block;
+  //         position: absolute;
+  //         top: 0;
+  //         left: 0;
+  //         transform-origin: right;
+  //         transform: scaleX(0);
+  //         transition: transform 0.5s;
+  //         z-index: 0;
+  //       }
+
+  //       .tag::after {
+  //         content: "";
+  //         width: 100%;
+  //         height: 50%;
+  //         background: $tag-bg-hover;
+  //         display: block;
+  //         position: absolute;
+  //         bottom: 0;
+  //         left: 0;
+  //         transform-origin: left;
+  //         transform: scaleX(0);
+  //         transition: transform 0.5s;
+  //         z-index: 0;
+  //       }
+
+  //       .tag:hover span {
+  //         color: #ffffff;
+  //       }
+
+  //       .tag:hover::before {
+  //         transform-origin: left;
+  //         transform: scaleX(1);
+  //         transition: transform 0.5s;
+  //       }
+
+  //       .tag:hover::after {
+  //         transform-origin: right;
+  //         transform: scaleX(1);
+  //         transition: transform 0.5s;
+  //       }
+  //     }
+  //   }
+  // }
+}
+
+.text-heading {
+  text-transform: uppercase;
+  position: relative;
+  font-size: $font-size-lg-1;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.mt-line {
+
+  &::after {
+    content: '';
+    position: relative;
+    background: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 28px;
+    margin-left: 15px;
+  }
+}
+
+.mt-line-2 {
+
+  &::after {
+    content: '';
+    position: relative;
+    background: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 28px;
+    margin-left: 15px;
+  }
+
+  &::before {
+    content: '';
+    position: relative;
+    background: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 28px;
+    margin-right: 15px;
+  }
+}
+
+
+.noti h6::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: lightgray;
+}
+
+.public-links {
+  list-style: none;
+}
+
+.card-xs-container {
+  width: 80%;
+}
+
+// Technique session
+.techniques-name {
+  font-weight: 500;
+  font-size: $font-size-md;
+}
+
+.level-attach {
+  .level-rate {
+    font-size: $font-size-sm-1;
+
+    .level {
+      width: 20px;
+      height: 7px;
+      margin: 4px;
+      background: $tag-bg;
+      border-radius: 3px;
+    }
+
+    .level.checked {
+      background: $color-success;
+    }
+  }
+}
+
+// End technique
+
+.contact {
+  font-size: $font-size-md;
+}
+
+@media screen and (max-width: 1024px) {
+  .interviewee-details {
+    width: 100%;
+  }
+
+  .w-60 {
+    width: 100% !important;
+  }
+
+  .bg-left {
+    display: none;
+  }
+
+  .bg-right {
+    display: none;
+  }
+
+  .interviewee-details {
+    // .avatar {
+    //   width: 150px;
+    //   height: 150px;
+    //   display: block;
+    //   position: relative;
+    //   margin: 120px 0px 50px 20px;
+
+    //   img {
+    //     width: 150px;
+    //     height: 150px;
+    //   }
+    // }
+  }
+
+  // .card-heading {
+  //   margin: 0px 0px 0px 0px;
+  //   padding: 0px;
+
+  //   .heading-option {
+  //     .text-name {
+  //       font-size: $text-name-size-1 !important;
+  //     }
+
+  //     .tag-container {
+  //       .tag {
+  //         height: 23px;
+  //         cursor: pointer;
+  //         padding-top: 3px;
+  //       }
+
+  //       .tag span {
+  //         font-size: $font-size-sm-1;
+  //       }
+  //     }
+  //   }
+  // }
+}
+
+@media screen and (max-width: 768px) {
+  .interviewee-details {
+    width: 100%;
+  }
+
+  // .card-heading {
+  //   padding: 0px !important;
+  // }
+}
+
+@media screen and (max-width: 650px) {
+  .top-wrapper{
+    min-height: 150px !important;
+  }
+  .card-xs-container {
+    width: 100% !important;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .interviewee-details {
+    // .avatar {
+    //   width: 100px;
+    //   height: 100px;
+    //   display: block;
+    //   position: relative;
+    //   margin: 50px 0px 0px 40px;
+
+    //   img {
+    //     width: 100px;
+    //     height: 100px;
+    //   }
+    // }
+
+    .card-heading {
+      margin: -30px 0px 0px 0px;
+      padding: 0px;
+
+      // .heading-option {
+      //   .text-name {
+      //     font-size: $font-size-lg-1 !important;
+      //   }
+
+      //   .tag-container {
+      //     .tag {
+      //       height: 23px;
+      //       cursor: pointer;
+      //       padding-top: 3px;
+      //     }
+
+      //     .tag span {
+      //       font-size: $font-size-md;
+      //     }
+      //   }
+      // }
+    }
+
+
+  }
+
+  .card {
+    // .card-top {
+    //   max-height: 100px !important;
+    // }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  * {
+    font-size: $font-size-sm !important;
+  }
+
+
+  .top-wrapper {
+    min-height: 150px !important;
+  }
+
+  .text-heading {
+    font-size: $font-size-lg-2 !important;
+  }
+
+  .interviewee-details {
+    // .card-top {
+    //   width: 100%;
+    //   -webkit-clip-path: polygon(0 0, 100% 0, 100% 73%, 0% 100%);
+    //   clip-path: polygon(0 0, 100% 0, 100% 73%, 0% 100%);
+    // }
+
+    // .avatar {
+    //   width: 70px;
+    //   height: 70px;
+    //   margin: 40px 0px -80px 0px !important;
+
+    //   img {
+    //     width: 70px;
+    //     height: 70px;
+    //     object-fit: cover;
+    //   }
+    // }
+
+    // .card-heading {
+    //   margin: 40px 0px -50px 10px !important;
+    //   padding: 10px !important;
+
+    //   .heading-option {
+    //     .text-name {
+    //       font-size: 0.85rem !important;
+    //     }
+
+    //     .tag-container {
+    //       .tag span {
+    //         font-size: $font-size-sm;
+    //       }
+    //     }
+    //   }
+    // }
+
+  }
+
+  .card {
+    .card-top {
+      height: 60px !important;
+    }
+  }
+
+  .card-xs-container {
+    width: 100% !important;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}

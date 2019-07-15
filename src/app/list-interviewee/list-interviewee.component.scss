@@ -1,0 +1,335 @@
+$bg-color: #f8f8f9;
+$color-success: #25de8c;
+$name-color: #2d3c4d;
+$tag-bg: #eff2f7;
+$tag-bg-hover: #bdbfc4;
+$text-smoke-color: #b7c2cf;
+$text-smoke-hover: #e0e0e0;
+$icon-color: #c8d1db;
+$font-size-sm: 0.9rem;
+$font-size-sm-mb: 0.8rem;
+$font-size-sm-1: 0.6rem;
+$font-size-md: 1rem;
+$font-size-md-mb: 0.95rem;
+$font-size-lg: 1.2rem;
+
+$lightcolor: #fff;
+$darkcolor: #444;
+
+
+.no-break-line {
+  white-space: nowrap;
+}
+
+.itv_not_found {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.card-main {
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  z-index: 4;
+  height: 98px;
+  cursor: pointer;
+}
+
+.card-main:hover {
+  -webkit-box-shadow: 0px 1px 8px 0px rgba(189, 179, 189, 1);
+  -moz-box-shadow: 0px 1px 8px 0px rgba(189, 179, 189, 1);
+  box-shadow: 0px 1px 8px 0px rgba(189, 179, 189, 1);
+}
+
+.avatar-container {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar div {
+  padding: 4px !important;
+}
+.avatar div img {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+}
+
+.interviewee-detail-start {
+  flex: 1;
+  padding: 10px 0px 0px 0px;
+  min-width: 135px;
+}
+.name-title {
+  color: $name-color;
+  font-weight: 600;
+  font-size: $font-size-lg;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tag-container {
+  .tag {
+    background-color: $tag-bg;
+    height: 25px;
+    cursor: pointer;
+    padding-top: 5px;
+    position: relative;
+    transition: 0.5s;
+  }
+  .tag span {
+    text-transform: uppercase;
+    color: $text-smoke-color;
+    font-size: $font-size-sm-1;
+    margin: 0px 10px 0px 10px;
+    z-index: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .tag::before {
+    content: "";
+    width: 100%;
+    height: 50%;
+    background: $tag-bg-hover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+    z-index: 0;
+  }
+
+  .tag::after {
+    content: "";
+    width: 100%;
+    height: 50%;
+    background: $tag-bg-hover;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+    z-index: 0;
+  }
+  .tag:hover span {
+    color: #ffffff;
+  }
+  .tag:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform 0.5s;
+  }
+  .tag:hover::after {
+    transform-origin: right;
+    transform: scaleX(1);
+    transition: transform 0.5s;
+  }
+}
+//  end details starts
+.interviewee-details-end {
+  flex: 2;
+}
+
+.status {
+  width: 100px;
+  text-transform: uppercase;
+  height: 32px;
+  line-height: 28px;
+}
+
+.bottom-interviewee-detail-end {
+  color: $icon-color;
+  font-size: $font-size-sm;
+  min-width: 340px;
+}
+
+.pavigation {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+@media screen and (max-width: 1366px) {
+  .interviewee-detail-start {
+    padding: 1vh;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .card-main {
+    min-height: 98px;
+  }
+  .interviewee-list {
+    margin-top: -30px;
+  }
+  .status {
+    font-size: $font-size-sm-1;
+    height: 28px;
+  }
+  .form-filter {
+    min-width: 180px;
+  }
+  .tag-container .tag span {
+    font-size: $font-size-sm-1;
+  }
+}
+@media screen and (max-width: 768px) {
+  .interviewee-list {
+    margin-top: -100px;
+  }
+  .avatar-container .avatar div {
+    padding: 0px !important;
+  }
+  .name-title {
+    font-size: $font-size-md;
+  }
+  .status {
+    line-height: 23px;
+  }
+  .tag {
+    height: 20px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tag span {
+    font-size: 0.6rem;
+    line-height: 12px;
+    max-width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .bottom-interviewee-detail-end {
+    min-width: 0px !important;
+  }
+  .location,
+  .schedule {
+    font-size: 0.75rem !important;
+    min-width: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .interviewee-list {
+    margin-top: -90px !important;
+  }
+  .avatar-container .avatar div img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+  .status {
+    width: 60px;
+    height: 20px;
+    font-size: 0.5rem;
+    line-height: 18px;
+  }
+  .bottom-interviewee-detail-end .schedule {
+    margin: 0 !important;
+  }
+  .bottom-interviewee-detail-end {
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: flex-end !important;
+  }
+  .location,
+  .schedule {
+    white-space: nowrap;
+    font-size: 0.7rem !important;
+  }
+
+  .interviewee-detail-start {
+    margin: auto 0px;
+  }
+
+  .name-title {
+    font-size: 0.95rem;
+    overflow: unset !important;
+    text-overflow: unset !important;
+    white-space: unset !important;
+  }
+  .tag {
+    height: 18px !important;
+    overflow: hidden;
+    max-width: 80px;
+  }
+  .tag span {
+    font-size: 0.5rem !important;
+    margin: 0px 10px 0px 0px;
+    line-height: 8px;
+    max-width: 60px;
+    white-space: nowrap;
+  }
+  .tag:nth-child(2) {
+    margin-right: 0px !important;
+  }
+  .pavigation {
+    font-size: 0.5rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .avatar-container .avatar div img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+  .bottom-interviewee-detail-end {
+    font-size: 0.5rem !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 844px) {
+  .interviewee-list {
+    margin-top: -50px;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .interviewee-list {
+    margin-top: -20px;
+  }
+}
+
+// time line start
+
+.time-line {
+  width: 15px;
+  height: 98px;
+  border-left: 3px solid #ff7273;
+  position: absolute;
+}
+
+.time-line .shape-timeline {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 35%;
+  left: -17px;
+}
+.time-line .shape-timeline img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  z-index: -5;
+}
+.time-line .shape-timeline span {
+  font-size: 0.6rem;
+  line-height: 28px;
+  margin: auto;
+  color: #ffffff;
+}

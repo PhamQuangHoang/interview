@@ -1,0 +1,203 @@
+<form [formGroup]="formUpdate" *ngIf="formUpdate">
+  <div class="row px-3 m-0 justify-content-center">
+    <div class="col-md-5 mt-5 p-0 ">
+      <div class="w-100 h-100 d-flex justify-content-center align-items-center center-mb">
+        <app-image-upload [existImgUrl]="avatar" class="z-index-99"></app-image-upload>
+      </div>
+    </div>
+    <div class="col-md-1 d-sm-none d-md-block d-lg-block">
+
+    </div>
+    <div class="col-md-6 p-0 mt-5">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-start mt-line pl-xl-5">
+          <h6 class="font-weight-bold my-3 text-heading title ">Interviewee information</h6>
+        </div>
+        <div class="col-12 text-md pl-xl-5">
+          <!-- Grid row -->
+          <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+            <!-- Material input -->
+            <label for="fullname" class="col-form-label">Fullname:</label>
+            <div class="col-9">
+              <div class="md-form mt-0">
+                <input mdbInput type="text" formControlName="fullname" class="form-control text-md mt-3" id="fullname"
+                  placeholder="Full name">
+                <div *ngFor="let validation of update_validation_messages.fullname">
+                  <mdb-error
+                    *ngIf=" (formUpdate.get('fullname').hasError(validation.type) && (formUpdate.get('fullname').touched)) || (formUpdate.get('fullname').hasError(validation.type) && submited)">
+                    {{validation.message}}
+                  </mdb-error>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Grid row -->
+          <!-- Grid row -->
+          <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+            <!-- Material input -->
+            <label for="birthday" class="col-form-label">Birthday:</label>
+            <div class="col-9 picker-box">
+              <div class="date-picker d-flex justify-content-center align-items-center">
+                <label for="birthday" class="d-flex justify-content-around align-items-center mt-1 ">
+                  <input type="text" formControlName="birthday" class="w-100 " [dateFormat]="'d/m/Y'" mwlFlatpickr
+                    id="birthday">
+                  <mdb-icon far icon="calendar-plus" class="text-primary icon" size="md">
+                  </mdb-icon>
+                </label>
+                <mdb-icon fas icon="times" class="text-danger mx-1 rm-icon" size="md" *ngIf="dateFrom"
+                  (click)="removeDateValue(); "></mdb-icon>
+              </div>
+            </div>
+          </div>
+          <!-- Grid row -->
+          <!-- Grid row -->
+          <div class="form-group h-60-px d-flex justify-content-between align-items-center">
+            <!-- Material input -->
+            <label for="gender" class="col-form-label title">Gender:</label>
+            <div class="col-9 d-flex flex-row">
+              <!-- Default inline 1-->
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="gender" class="custom-control-input" id="male" name="gender"
+                  [value]=false mdbInput>
+                <label class="custom-control-label title" for="male">Male</label>
+              </div>
+
+              <!-- Default inline 2-->
+              <div class="custom-control custom-radio ml-2">
+                <input type="radio" formControlName="gender" class="custom-control-input" id="female" [value]=true
+                  name="gender" mdbInput>
+                <label class="custom-control-label title" for="female">Female</label>
+              </div>
+            </div>
+          </div>
+          <!-- Grid row -->
+          <!-- Grid row -->
+          <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+            <!-- Material input -->
+            <label for="Attach" class="col-form-label title ">Attach cv:</label>
+            <div class="col-9 file-box">
+              <div class="file-upload-wrapper no-break-line" [attr.data-text]="filesName">
+                <input alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)" [(fileModel)]="files"
+                  [(rawFileModel)]="rawFiles" type="file" class="file-upload-field" accept="application/pdf">
+              </div>
+            </div>
+          </div>
+          <!-- Grid row -->
+        </div>
+      </div>
+    </div>
+
+    <!-- row 3 -->
+    <div class="col-md-5 mt-5">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-start mt-line p-0">
+          <h6 class="font-weight-bold my-3 text-heading title">Interviewee contact</h6>
+        </div>
+        <div class="col-12 text-md p-0">
+          <!-- Grid row -->
+          <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+            <!-- Material input -->
+            <label for="address" class="col-form-label title">Address:</label>
+            <div class="col-9">
+              <div class="md-form mt-0 ">
+                <input mdbInput type="text" formControlName="address" class="form-control text-md mt-3 " id="address"
+                  placeholder="Address">
+              </div>
+            </div>
+          </div>
+          <!-- Grid row -->
+          <!-- Grid row -->
+          <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+            <!-- Material input -->
+            <label for="phonenumber" class="col-form-label title">Phone:</label>
+            <div class="col-9">
+              <div class="md-form mt-0 ">
+                <input mdbInput type="text" formControlName="phoneNumber" class="form-control text-md mt-3"
+                  id="phonenumber" placeholder="Phone number">
+                <div *ngFor="let validation of update_validation_messages.phoneNumber">
+                  <mdb-error
+                    *ngIf=" (formUpdate.get('phoneNumber').hasError(validation.type) && (formUpdate.get('phoneNumber').touched)) || (formUpdate.get('phoneNumber').hasError(validation.type) && submited)">
+                    {{validation.message}}
+                  </mdb-error>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Grid row -->
+          <!-- Grid row -->
+          <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+            <!-- Material input -->
+            <label for="email" class="col-form-label title">Email:</label>
+            <div class="col-9">
+              <div class="md-form mt-0 ">
+                <input mdbInput type="text" formControlName="email" class="form-control text-md mt-3" id="email"
+                  placeholder="Email">
+                <div *ngFor="let validation of update_validation_messages.email">
+                  <mdb-error
+                    *ngIf=" (formUpdate.get('email').hasError(validation.type) && (formUpdate.get('email').touched)) || (formUpdate.get('email').hasError(validation.type) && submited) ">
+                    {{validation.message}}
+                  </mdb-error>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Grid row -->
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 d-sm-none d-md-block d-lg-block">
+
+    </div>
+    <div class="col-md-6 p-0 mt-5">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-start mt-line pl-xl-5">
+          <h6 class="font-weight-bold my-3 text-heading">Schedule </h6>
+        </div>
+        <div class="col-12 text-md pl-xl-5">
+          <!-- Grid row -->
+          <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+            <!-- Material input -->
+            <label for="date_schedule" class="col-form-label">Date:</label>
+            <div class="col-9 picker-box">
+              <div class="date-picker d-flex justify-content-center align-items-center">
+                <label for="date_schedule" class="d-flex justify-content-around align-items-center mt-1">
+                  <input type="text" formControlName="timeInterview" mwlFlatpickr class="w-100" id="date_schedule"
+                    [dateFormat]="'m/d/Y H:i'" [enableTime]="true">
+                  <mdb-icon far icon="calendar-plus" class="text-primary icon" size="md">
+                  </mdb-icon>
+                </label>
+                <mdb-icon fas icon="times" class="text-danger mx-1 rm-icon" size="md" *ngIf="dateFrom"
+                  (click)="removeDateValue(); "></mdb-icon>
+              </div>
+            </div>
+          </div>
+          <!-- Grid row -->
+          <!-- Grid row -->
+          <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+            <!-- Material input -->
+            <label for="place_schedule" class="col-form-label title">Place:</label>
+            <div class="col-9">
+              <div class="md-form mt-0">
+                <input mdbInput type="text" formControlName="placeInterview" class="form-control text-md mt-3"
+                  id="place_schedule" placeholder="Interview place">
+              </div>
+            </div>
+          </div>
+          <!-- Grid row -->
+          <!-- Grid row -->
+          <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+            <!-- Material input -->
+            <label for="Attach" class="col-form-label title">Position:</label>
+            <div class="col-9">
+              <select formControlName="positionId" value="" class="browser-default custom-select">
+                <option *ngFor="let item of positionsList" value="{{item.id}}">{{item.name}}</option>
+              </select>
+            </div>
+          </div>
+          <!-- Grid row -->
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

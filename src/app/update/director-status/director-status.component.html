@@ -1,0 +1,21 @@
+<div class="col-md-4 col-sm-6 col-10 p-0 status z-depth-1  status-badge">
+  <mdb-badge class="w-100 h-100 " mdbWavesEffect>
+    <form [formGroup]="statusForm" class="h-100"
+      [ngClass]="statusColor === 'PASSED' ? 'bg-success' : statusColor === 'FAILED' ? 'bg-danger' : ''">
+      <!-- Default inline 1-->
+      <div class="cusor-poiter custom-control custom-radio custom-control-inline">
+        <input (click)="changeStatus('PASSED')" type="radio" formControlName="status"
+          class="custom-control-input" value="PASSED" id="pass" name="status" mdbInput>
+        <label [style.color]="statusColor === 'PASSED' ? '#ffffff' : '#0000006e' " class="custom-control-label title"
+          for="pass">PASSED</label>
+      </div>
+      <!-- Default inline 1-->
+      <div class=" cusor-poiter custom-control custom-radio custom-control-inline">
+        <input (click)="changeStatus('FAILED')" type="radio" formControlName="status"
+          class="custom-control-input" value="FAILED" id="fail" name="status" mdbInput>
+        <label [style.color]="statusColor === 'FAILED' ? '#ffffff' : '#0000006e' " class="custom-control-label title"
+          for="fail">FAILED</label>
+      </div>
+    </form>
+  </mdb-badge>
+</div>

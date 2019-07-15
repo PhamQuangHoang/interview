@@ -1,0 +1,239 @@
+<!-- Title -->
+<div class="jumbotron text-center">
+  <h2 class="card-title h3">USER MANAGE</h2>
+</div>
+
+
+<div class="container" style="min-height: 60vh;">
+  <!-- Search -->
+  <!-- <div class="row">
+    <div class="col-md-9 mx-auto">
+      <div class="md-form">
+        <input type="text" class="form-control" (keyup)="doSearch($event);" id="search" mdbInput>
+        <label for="search">Search</label>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="message" class="row justify-content-center">
+    <div class="alert alert-success" role="alert">
+      {{message }}
+    </div>
+  </div> -->
+
+  <!-- Add Button -->
+  <div class="row  float-right">
+    <span class="table-add mb-3 mr-2 text-md">
+      <button mdbBtn type="button" (click)="resetFormAdd();addModal.show();" size="sm" color="success" rounded="true"
+        mdbWavesEffect>
+        New user &emsp; <mdb-icon fas icon="plus" size="lg"></mdb-icon>
+      </button>
+    </span>
+  </div>
+  <!-- Table -->
+  <div class="table-responsive z-depth-1 mt-5 mb-5">
+    <table mdbTable #tableEl="mdbTable">
+      <thead>
+        <tr class="table-head ">
+          <th class="font-weight-bold text-md" *ngFor="let head of headElements" scope="col">{{head}}
+          </th>
+        </tr>
+      </thead>
+      <tbody class="tablebody">
+        <tr *ngFor="let user of users | paginate: config;let i = index" [attr.data-index]="i">
+          <td>{{ i+1 + config.itemsPerPage * (config.currentPage-1)}}</td>
+          <td>{{user.fullname}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.roles}}</td>
+          <td>
+            <mdb-icon fas icon="edit" style="margin-right: 15px" (click)="edit(editModal,user.id);"
+              class="icon-edit-table">
+            </mdb-icon>
+            <mdb-icon fas icon="trash" (click)="deleteUser(deleteModal,user.id);" class="icon-delete-table"></mdb-icon>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot class="grey lighten-5 w-100">
+        <tr>
+          <td colspan="5" class="text-center">
+            <pagination-controls id="list_user" directionLinks="true" (pageChange)="pageChange($event)">
+            </pagination-controls>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<!-- Modal Delete -->
+<div mdbModal #deleteModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document"> `
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="deleteModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100  text-center" id="myModalLabel">Delete</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure, you want to delete this user?
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn class="waves-light button-close" aria-label="Close" (click)="deleteModal.hide()"
+          mdbWavesEffect>Close</button>
+        <button type="button" mdbBtn class="relative waves-light button-delete" (click)="deleteOnServer(deleteModal);"
+          mdbWavesEffect>Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Edit-->
+<div mdbModal #editModal="mdbModal" class="modal fade overflow-auto" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <form (ngSubmit)="editUser(editModal)" [formGroup]="formEdit" *ngIf="formEdit">
+    <div class="modal-dialog modal-large" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="hide(editModal,formEdit)">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100 text-center" id="myModalLabel">Edit</h4>
+        </div>
+        <div class="modal-body">
+          <div class="md-form form-group">
+            <mdb-icon fas icon="user-check"></mdb-icon>
+            <input type="text" class="form-control" id="fullname-add" formControlName="fullname" mdbValidate mdbInput>
+            <label for="fullname-add">Full name <span style="color:orangered">*</span></label>
+            <div *ngFor="let validation of add_validation_messages.fullname">
+              <mdb-error class="ml-5"
+                *ngIf="(formEdit.get('fullname').hasError(validation.type) && (formEdit.get('fullname').touched))  || (formEdit.get('fullname').hasError(validation.type) && submited)">
+                {{validation.message}}
+              </mdb-error>
+            </div>
+          </div>
+          <div class="md-form form-group">
+            <mdb-icon fas icon="user-circle"></mdb-icon>
+            <input type="text" class="form-control" formControlName="username" id="username-add" mdbValidate mdbInput>
+            <label for="username-add">User name <span style="color:orangered">*</span></label>
+            <div *ngFor="let validation of add_validation_messages.username">
+              <mdb-error class="ml-5"
+                *ngIf="(formEdit.get('username').hasError(validation.type) && (formEdit.get('username').touched))  || (formEdit.get('username').hasError(validation.type) && submited)">
+                {{validation.message}}
+              </mdb-error>
+            </div>
+          </div>
+          <div class="md-form form-group">
+            <mdb-icon fas icon="lock"></mdb-icon>
+            <input type="password" class="form-control" formControlName="password" id="password-add" mdbValidate
+              mdbInput>
+            <label for="password-add">Password<span style="color:orangered">*</span></label>
+            <div *ngFor="let validation of add_validation_messages.password">
+              <mdb-error class="ml-5"
+                *ngIf="(formEdit.get('password').hasError(validation.type) && (formEdit.get('password').touched))  || (formEdit.get('password').hasError(validation.type) && submited)">
+                {{validation.message}}
+              </mdb-error>
+            </div>
+          </div>
+          <div class="md-form form-group w-100 d-flex">
+            <label for="function" class="font-weight-bold">Role <span style="color:orangered">*</span></label>
+            <div class="checkGroup ">
+              <div class="checkbox mt-1 p-0" *ngFor="let role1 of roleEditArray.controls;let i = index;">
+                <label for="roleEditCheckbox{{i}}" class="d-flex justify-content-between align-items-center px-2">
+                  <span>{{roles[i].item_text}}</span>
+                  <input [formControl]="role1" (change)="getSelectedEditRole()" id="roleEditCheckbox{{i}}"
+                    type="checkbox">
+                </label>
+              </div>
+            </div>
+            <div *ngFor="let validation of add_validation_messages.roles">
+              <mdb-error class="" *ngIf="(formEdit.get('roleEditPreferences').touched && !isValidFormEditArray()) || ( !isValidFormEditArray() && submited)" >
+                {{validation.message}}
+              </mdb-error>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center align-items-center">
+          <button type="button" mdbBtn class="waves-light button-close" aria-label="Close"
+            (click)="hide(editModal,formEdit)" mdbWavesEffect>Close</button>
+          <button type="submit" mdbBtn class="relative waves-light button-accept" mdbWavesEffect>Save changes</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Modal Add-->
+<div mdbModal #addModal="mdbModal" class="modal fade overflow-auto" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <form [formGroup]="formAdd">
+    <div class="modal-dialog modal-large" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="hide(addModal,formAdd)">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100 text-center" id="myModalLabel">Add</h4>
+        </div>
+        <div class="modal-body">
+          <div class="md-form form-group">
+            <mdb-icon fas icon="user-check"></mdb-icon>
+            <input type="text" class="form-control" id="fullname" formControlName="fullname" mdbValidate mdbInput>
+            <label for="fullname">Full name <span style="color:orangered">*</span></label>
+            <div *ngFor="let validation of add_validation_messages.fullname">
+              <mdb-error class="ml-5"
+                *ngIf="(formAdd.get('fullname').hasError(validation.type) && (formAdd.get('fullname').touched))  || (formAdd.get('fullname').hasError(validation.type) && submited)">
+                {{validation.message}}
+              </mdb-error>
+            </div>
+          </div>
+          <div class="md-form form-group">
+            <mdb-icon fas icon="user-circle"></mdb-icon>
+            <input type="text" class="form-control" formControlName="username" id="username" mdbValidate mdbInput>
+            <label for="username">User name <span style="color:orangered">*</span></label>
+            <div *ngFor="let validation of add_validation_messages.username">
+              <mdb-error class="ml-5"
+                *ngIf="(formAdd.get('username').hasError(validation.type) && (formAdd.get('username').touched))  || (formAdd.get('username').hasError(validation.type) && submited)">
+                {{validation.message}}
+              </mdb-error>
+            </div>
+          </div>
+          <div class="md-form form-group">
+            <mdb-icon fas icon="lock"></mdb-icon>
+            <input type="password" class="form-control" formControlName="password" id="password" mdbValidate mdbInput>
+            <label for="password">Password <span style="color:orangered">*</span></label>
+            <div *ngFor="let validation of add_validation_messages.password">
+              <mdb-error class="ml-5"
+                *ngIf="(formAdd.get('password').hasError(validation.type) && (formAdd.get('password').touched))  || (formAdd.get('password').hasError(validation.type) && submited)">
+                {{validation.message}}
+              </mdb-error>
+            </div>
+          </div>
+          <div class="md-form form-group">
+
+            <label for="function" class="font-weight-bold">Role <span style="color:orangered">*</span></label>
+
+            <div class="checkGroup">
+              <div class="checkbox mt-1 p-0" *ngFor="let role of roleAddArray.controls;let i = index;">
+                <label for="roleAddCheckbox{{i}}" class="d-flex justify-content-between align-items-center px-2">
+                  <span>{{roles[i].item_text}}</span>
+                  <input [formControl]="role" (change)="getSelectedAddRole()" id="roleAddCheckbox{{i}}" type="checkbox">
+                </label>
+              </div>
+            </div>
+            <div *ngFor="let validation of add_validation_messages.roles">
+              <mdb-error class="" *ngIf="(formAdd.get('roleAddPreferences').touched && !isValidFormAddArray()) || ( !isValidFormAddArray() && submited)" >
+                {{validation.message}}
+              </mdb-error>
+            </div>
+          </div>
+          
+        </div>
+        <div class="modal-footer d-flex justify-content-center align-items-center">
+          <button type="button" mdbBtn class="waves-light button-close" aria-label="Close"
+            (click)="hide(addModal,formAdd)" mdbWavesEffect>Close</button>
+          <button type="button" mdbBtn class="relative waves-light button-accept" mdbWavesEffect
+            (click)="addUser(addModal)">Add</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

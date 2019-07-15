@@ -1,0 +1,39 @@
+<div class="avatar-upload ">
+  <div class="avatar-edit">
+    <input #imageInput type="file" id="imageUpload" accept="image/*"
+      (change)="fileChangeEvent($event);cropModal.show();">
+    <label for="imageUpload" class="d-flex justify-content-center align-items-center">
+      <mdb-icon far icon="file-image" size="sm"></mdb-icon>
+    </label>
+    <a href="javascript:void(0)" *ngIf="canCroped" size="sm" class="btn-crop" outline="true" (click)="cropModal.show()" color="white"
+      mdbWavesEffect>
+      <mdb-icon fas icon="crop-alt" class="mt-1" size="sm"></mdb-icon>
+    </a>
+  </div>
+  <div class="avatar-preview">
+    <div id="imagePreview">
+      <img id="myImage" class="img-responsive" [src]="croppedImage" alt="your image" />
+    </div>
+  </div>
+</div>
+<div mdbModal #cropModal="mdbModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-full-height modal-right modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="cropModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Crop your image</h4>
+      </div>
+      <div class="modal-body">
+        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="3 / 4"
+          format="png" (imageCropped)="imageCropped($event)" ></image-cropper>
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="cropModal.hide()"
+          mdbWavesEffect>Close</button>
+      </div>
+    </div>
+  </div>
+</div>

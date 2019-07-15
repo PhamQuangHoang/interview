@@ -1,0 +1,99 @@
+$font-size-lg: 1.2rem;
+$font-size-lg-1: 1.1rem;
+$font-size-lg-2: 0.95rem;
+$font-size-md: 1rem;
+$font-size-sm-1: 0.9rem;
+$font-size-sm: 0.8rem;
+$font-size-sm-2: 0.5rem;
+
+
+.status {
+  background: #ffffff;
+  position: relative;
+  height: 42px !important;
+  margin-top: -17.5px;
+  background-color: white;
+  // border-radius: 6px !important;
+
+  .waves-effect {
+    cursor: unset;
+  }
+
+  .badge {
+    padding: 0px !important;
+  
+    div {
+      padding-top: 6px !important;
+     
+      color: #bdbdbd;
+      .custom-control-label::after,
+      .custom-control-label::before {
+        display: none;
+      }
+
+      .title {
+        line-height: 30px;
+        font-size: $font-size-lg-1;
+        cursor: pointer;
+        letter-spacing: 0.3em;
+      }
+    }
+  }
+}
+
+.status-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: $font-size-md;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+}
+
+@media screen and (max-width: 1024px) {
+  .status {
+    .badge {
+      form {
+        div {
+          .title {
+            font-size: $font-size-md;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .status {
+    .badge {
+      form {
+        div {
+          .title {
+            font-size: $font-size-sm-1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .status {
+    .badge {
+      form {
+        div {
+          .title {
+            font-size: $font-size-sm-2;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width:1024px){
+  .status{
+    margin-right: -14px;
+  } 
+}

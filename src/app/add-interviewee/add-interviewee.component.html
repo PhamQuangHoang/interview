@@ -1,0 +1,240 @@
+<div class="top-wraper">
+  <div class="bg-left"></div>
+  <div class="bg-right"></div>
+</div>
+<div class="container">
+
+  <form [formGroup]="formAdd" (ngSubmit)="addIntervieww();">
+    <!--Grid row-->
+    <div class="row z-depth-1 pl-4 z-index-2">
+      <div class="col-md-5 mt-5 p-0 ">
+        <div class="w-100 h-100 d-flex justify-content-center align-items-center center-mb">
+            <app-image-upload [existImgUrl]="avatar" class="z-index-99"></app-image-upload>
+        </div>
+      </div>
+      <div class="col-md-1 d-md-none d-lg-block">
+
+      </div>
+      <div class="col-md-6 mt-5">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-start mt-line">
+            <h6 class="font-weight-bold my-3 text-heading title">Interviewee information</h6>
+          </div>
+          <div class="col-12 text-md">
+            <!-- Grid row -->
+            <div class="form-group h-60-px d-flex justify-content-between align-items-center">
+              <!-- Material input -->
+              <label for="fullname" class="col-form-label title col-3">Fullname:</label>
+              <div class="col-9">
+                <div class="md-form mt-0">
+                  <input mdbInput type="text" formControlName="fullname" class="form-control text-md mt-3" id="fullname"
+                    placeholder="Full name">
+                  <div *ngFor="let validation of add_validation_messages.fullname">
+                    <mdb-error
+                      *ngIf=" (formAdd.get('fullname').hasError(validation.type) && (formAdd.get('fullname').touched)) || (formAdd.get('fullname').hasError(validation.type) && submited)">
+                      {{validation.message}}
+                    </mdb-error>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Grid row -->
+            <!-- Grid row -->
+            <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+              <!-- Material input -->
+              <label for="birthday" class="col-form-label col-3">Birthday:</label>
+              <div class="col-9">
+                <div class="date-picker d-flex justify-content-center align-items-center">
+                  <label for="birthday" class="d-flex justify-content-around align-items-center mt-1 ">
+                    <input type="text" formControlName="birthday" class="ML-2" [dateFormat]="'d/m/Y'" mwlFlatpickr
+                      id="birthday" disableMobile=true placeholder="dd/mm/yyy">
+                      <div *ngFor="let validation of add_validation_messages.birthday">
+                        <mdb-error
+                          *ngIf=" (formAdd.get('birthday').hasError(validation.type) && (formAdd.get('birthday').touched)) || (formAdd.get('birthday').hasError(validation.type) && submited)">
+                          {{validation.message}}
+                        </mdb-error>
+                      </div>
+                    <mdb-icon far icon="calendar-plus" class="text-primary icon" size="md">
+                    </mdb-icon>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- Grid row -->
+            <!-- Grid row -->
+            <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+              <!-- Material input -->
+              <label for="gender" class="col-form-label title col-3">Gender:</label>
+              <div class="col-9">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" formControlName="gender" class="custom-control-input" id="male" name="gender"
+                    value="male">
+                  <label class="custom-control-label" for="male">Male</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" formControlName="gender" class="custom-control-input" id="female" name="gender"
+                    value="female">
+                  <label class="custom-control-label" for="female">Female</label>
+                </div>
+                <div  *ngFor="let validation of add_validation_messages.gender">
+                  <mdb-error
+                    *ngIf=" (formAdd.get('gender').hasError(validation.type) && (formAdd.get('gender').touched)) || (formAdd.get('gender').hasError(validation.type) && submited)">
+                    {{validation.message}}
+                  </mdb-error>
+                </div>
+              </div>
+            </div>
+            <!-- Grid row -->
+            <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+              <!-- Material input -->
+              <label for="Attach" class="col-form-label title col-3">Attach cv:</label>
+              <div class="file-box col-9">
+                <div class="file-upload-wrapper" [attr.data-text]="filesName">
+                  <input alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)" [(fileModel)]="files"
+                    [(rawFileModel)]="rawFiles" type="file" class="file-upload-field"
+                    accept="application/msword, application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, image/*">
+                </div>
+              </div>
+            </div>
+            <!-- Grid row -->
+          </div>
+        </div>
+      </div>
+      <!-- row 3 -->
+      <div class="col-md-5 mt-5">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-start mt-line">
+            <h6 class="font-weight-bold my-3 text-heading title">Interviewee contact</h6>
+          </div>
+          <div class="col-12 text-md">
+            <!-- Grid row -->
+            <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+              <!-- Material input -->
+              <label for="address" class="col-form-label title col-3">Address:</label>
+              <div class="col-9">
+                <div class="md-form mt-0 ">
+                  <input mdbInput type="text" formControlName="address" class="form-control text-md mt-3" id="address"
+                    placeholder="Address">
+                </div>
+              </div>
+            </div>
+            <!-- Grid row -->
+            <!-- Grid row -->
+            <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+              <!-- Material input -->
+              <label for="phoneNumber" class="col-form-label title col-3">Phone:</label>
+              <div class="col-9">
+                <div class="md-form mt-0 ">
+                  <input mdbInput type="text" formControlName="phoneNumber" class="form-control text-md mt-3"
+                    id="phoneNumber" placeholder="Phone number">
+                  <div *ngFor="let validation of add_validation_messages.phoneNumber">
+                    <mdb-error
+                      *ngIf="(formAdd.get('phoneNumber').hasError(validation.type) && (formAdd.get('phoneNumber').touched )) || (formAdd.get('phoneNumber').hasError(validation.type) && submited)">
+                      {{validation.message }}
+                    </mdb-error>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Grid row -->
+            <!-- Grid row -->
+            <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+              <!-- Material input -->
+              <label for="email" class="col-form-label title col-3">Email:</label>
+              <div class="col-9">
+                <div class="md-form mt-0 ">
+                  <input mdbInput type="text" formControlName="email" class="form-control text-md mt-3"
+                    id="email" placeholder="Email">
+                  <div *ngFor="let validation of add_validation_messages.email">
+                    <mdb-error
+                      *ngIf="(formAdd.get('email').hasError(validation.type) && (formAdd.get('email').touched))  || (formAdd.get('email').hasError(validation.type) && submited)">
+                      {{validation.message}}
+                    </mdb-error>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Grid row -->
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1 d-md-none d-lg-block">
+
+      </div>
+      <div class="col-md-6 mt-5">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-start mt-line">
+            <h6 class="font-weight-bold my-3 text-heading">Schedule </h6>
+          </div>
+          <div class="col-12 text-md">
+            <!-- Grid row -->
+            <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+              <!-- Material input -->
+              <label for="date_schedule" class="col-form-label col-3">Date:</label>
+              <div class="col-9">
+                <div class="date-picker d-flex align-items-center">
+                  <label for="date_schedule" class="d-flex justify-content-around align-items-center mt-1">
+                    <input type="text" formControlName="timeInterview" mwlFlatpickr id="date_schedule"
+                      [dateFormat]="'d/m/Y H:i'" [enableTime]="true" disableMobile=true class="ml-2"
+                      placeholder="dd/mm/YYY H:i">
+                      <div *ngFor="let validation of add_validation_messages.timeInterview">
+                        <mdb-error
+                          *ngIf=" (formAdd.get('timeInterview').hasError(validation.type) && (formAdd.get('timeInterview').touched)) || (formAdd.get('timeInterview').hasError(validation.type) && submited)">
+                          {{validation.message}}
+                        </mdb-error>
+                      </div>
+                    <mdb-icon far icon="calendar-plus" class="text-primary icon" size="md">
+                    </mdb-icon>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- Grid row -->
+            <!-- Grid row -->
+            <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+              <!-- Material input -->
+              <label for="place_schedule" class="col-form-label title col-3">Place:</label>
+              <div class="col-9">
+                <div class="md-form mt-0">
+                  <input mdbInput type="text" formControlName="placeInterview" class="form-control text-md mt-3"
+                    id="place_schedule" placeholder="interview place">
+                </div>
+              </div>
+            </div>
+            <!-- Grid row -->
+            <!-- Grid row -->
+            <div class="form-group h-60-px  d-flex justify-content-between align-items-center">
+              <!-- Material input -->
+              <label for="Attach" class="col-form-label title col-3">Position:</label>
+              <div class="col-9">
+                <select formControlName="positionId" class="browser-default custom-select p-0">
+                  <option disabled value="">select postion</option>
+                  <option *ngFor="let item of positionList" value="{{item.id}}">{{item.name}}</option>
+                </select>
+                <div *ngFor="let validation of add_validation_messages.positionId">
+                  <mdb-error
+                    *ngIf="(formAdd.get('positionId').hasError(validation.type) && (formAdd.get('positionId').touched))  || (formAdd.get('positionId').hasError(validation.type) && submited)">
+                    {{validation.message}}
+                  </mdb-error>
+                </div>
+              </div>
+            </div>
+            <!-- Grid row -->
+          </div>
+        </div>
+      </div>
+      <!-- row 3 -->
+      <!-- row 4 -->
+      
+      <!-- row 4 -->
+      <!-- Action  [disabled]="!formAdd.valid" -->
+      <div class="row w-100 justify-content-center mb-5">
+        <button mdbBtn type="submit" class="btn-action" color="success" mdbWavesEffect size="md">
+          <mdb-icon far icon="save" color="white" size="lg"></mdb-icon>
+        </button>
+      </div>
+
+    </div>
+  </form>
+</div>

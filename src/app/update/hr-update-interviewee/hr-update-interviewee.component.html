@@ -1,0 +1,53 @@
+<div class="top-wraper">
+  <div class="bg-left"></div>
+  <div class="bg-right"></div>
+</div>
+<div class="container">
+
+
+  <!--Grid row-->
+
+  <div class="row z-depth-1 pl-4 ">
+    <!-- Main -->
+    <app-main-update class="row pl-3 w-100" (formData)="retriveFormData($event);" (SubmitForm)="submitForm();">
+    </app-main-update>
+
+    <div class="w-100 row justify-content-center my-5">
+      <button mdbBtn type="button" (click)="onSubmit();" color="indigo" size="lg" mdbWavesEffect>
+        <mdb-icon size="lg" far icon="save"></mdb-icon>
+      </button>
+
+      <button mdbBtn type="button" color="indigo" outline="true" (click)="deleteModal.show();" size="lg" mdbWavesEffect>
+        <mdb-icon fas icon="ban"></mdb-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- nope -->
+<div mdbModal #deleteModal="mdbModal" class="modal fade" id="thu2" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-primary" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Do you want cancel?</p>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fas fa-times fa-4x mb-3 animated rotateIn"></i>
+        </div>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="primary" class="waves-effect button4" mdbWavesEffect
+          routerLink="../../interviewee/{{userID}}" data-dismiss="modal">Yes</a>
+        <a type="button" mdbBtn color="primary" class="waves-effect button4" mdbWavesEffect (click)="deleteModal.hide()"
+          data-dismiss="modal">No</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>

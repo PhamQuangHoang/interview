@@ -1,0 +1,68 @@
+<!-- Title -->
+<div class="jumbotron text-center">
+  <h2 class="card-title h3">USER'S HISTORY</h2>
+</div>
+
+<!-- For later
+    <td>{{log.whichUser}} {{log.action}} <a (mouseenter)="getInterviewee(log.intervieweeId)" (mouseleave)="hideModal()" routerLink="../interviewee/{{log.intervieweeId}}" class="font-weight-bold" >{{log.whichInterviewee}}</a><span *ngIf="log.more !== null?true:false"> to <span class="{{log.color_badge}} font-weight-bold">{{log.more}}</span></span></td>
+
+-->
+<ng-template #hoverImgTemp style="">
+  <div class="animated fadeIn">
+  <h5 style="text-align: center">{{ currentInterviewee.fullname }}</h5>
+  <div class="d-flex flex-row">
+    <div [innerHtml]="test"></div>
+  </div>
+  </div>
+</ng-template>
+
+<div class="container">
+
+
+
+  <div class="table-responsive z-depth-1 mt-5 mb-5">
+    <table mdbTable #tableEl="mdbTable">
+      <thead>
+      <tr class="table-head " >
+        <th class="font-weight-bold text-md"scope="col">
+          #
+        </th>
+        <th class="font-weight-bold text-md"scope="col">
+          Content
+        </th>
+        <th class="font-weight-bold text-md"scope="col">
+          Time
+        </th>
+      </tr>
+      </thead>
+      <tbody class="tablebody">
+      <tr *ngFor="let log of list_of_logs | paginate: config; let i = index" [attr.data-index]="i" >
+        <td>{{ i+1 + config.itemsPerPage * (config.currentPage-1) }}</td>
+        <!--
+        <td>{{log.whichUser}} {{log.action}} <a (mouseenter)="getInterviewee(log.intervieweeId)" (mouseleave)="hideModal()" routerLink="../interviewee/{{log.intervieweeId}}" class="font-weight-bold" >{{log.whichInterviewee}}</a><span *ngIf="log.more !== null?true:false"> to <span class="{{log.color_badge}} font-weight-bold">{{log.more}}</span></span></td>
+        -->
+        <td>
+
+          <span class="font-weight-bold">{{log.whichUser.fullname}}</span> {{log.content}}
+          <!-- routerLink="../interviewee/{{log.intervieweeId}}"  -->
+            <span style="cursor: pointer;" class="font-weight-bold" color="primary" placement="right" [mdbPopover]="hoverImgTemp" mdbWavesEffect (mouseenter)="getInterviewee(log.whichInterviewee.id)"  triggers="hover">{{log.whichInterviewee.fullname}}
+            </span>
+            <span *ngIf="log.status !== null?true:false"> to
+              <span class="{{log.color_badge}} font-weight-bold">{{log.status}}
+              </span>
+            </span>
+        </td>
+        <td>{{ log.date }}</td>
+      </tr>
+      </tbody>
+      <tfoot class="grey lighten-5 w-100">
+      <tr>
+        <td colspan="5" class="text-center">
+          <pagination-controls id="list_logs" maxSize="7" directionLinks="true" (pageChange)="pageChange($event)">
+          </pagination-controls>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="top-wrapper">
+  <div class="bg-left"></div>
+  <div class="bg-right"></div>
+</div>
+<div class="container w-80">
+  <!-- <app-tags-input></app-tags-input> -->
+  <!--Grid row-->
+  <ng-container>
+    <div class="row mb-5 mt-150-negative  justify-content-center">
+      <!--Grid column-->
+      <div class="mx-auto w-100">
+        <mdb-card class="interviewee-details">
+          <app-card-top></app-card-top>
+          <app-director-status (statusEvent)="retriveStatus($event);"></app-director-status>
+          <form [formGroup]="updateForm" ngOnsubmit='onSubmit()'>
+            <div class="col-12 mt-5 w-100">
+              <div class="col-md-12">
+                <div class="col-12 d-flex justify-content-center flex-row mt-line-2 my-3">
+                    
+                  <h5 class="font-weight-bold my-3 text-center text-heading"> Director's note</h5>
+                  
+                </div>
+                <div class="col-12 d-flex justify-content-center " *ngFor="let validation of validation_messages.directorNote">
+                    <mdb-error class="error_msg"
+                      *ngIf="updateForm.get('directorNote').hasError(validation.type)">
+                      {{validation.message}}
+                    </mdb-error>
+                  </div> 
+                <div class="col-12 d-flex justify-content-center">
+                  <!-- Grid row -->
+                  <div class="form-group w-100 ">
+                      <div class="col-sm-12 w-100">
+                        <div class="md-form  w-100">  
+                          <div class="d-flex justify-content-center form-group ">
+                            <textarea class="col-lg-8 form-control rcorners" formControlName="directorNote" id="directorNote" rows="7"
+                              placeholder="_some note..." value="{{itv.directorNote}}"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>    
+                  <!-- Grid row -->
+                </div>
+              </div>
+              
+            </div>
+
+            <div class="row justify-content-center my-5 w-100 m-0">
+              <button mdbBtn type="button" (click)="onSubmit();" class="btn-action mx-4 my-2" color="indigo" mdbWavesEffect
+                size="lg" style="width: 98px; height:54px;">
+                <mdb-icon far icon="save" color="white" size="lg"></mdb-icon>
+              </button>
+              <button mdbBtn type="button" (click)="deleteModal.show()" class="btn-action mx-4 my-2" color="indigo" outline="true"
+                mdbWavesEffect size="lg" style="width: 98px; height:54px;">
+                <mdb-icon fas icon="ban" color="pink" size="lg"></mdb-icon>
+              </button>
+            </div>
+          </form>
+
+
+          <!-- Information main -->
+          <mdb-card-body>
+          </mdb-card-body>
+          <!-- Information main -->
+        </mdb-card>
+      </div>
+    </div>
+  </ng-container>
+  <!--Grid row-->
+</div>
+
+<ng-template #loading>
+  <div class="d-flex w-100 justify-content-center mt-5">
+    <div class="spinner-border text-info" style="width: 50vh;height:50vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>
+
+
+<div mdbModal #deleteModal="mdbModal" class="modal fade " id="thu2" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-notify modal-primary" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead  ">Do you want cancel?</p>
+      </div>
+
+      <div class="modal-footer justify-content-left">
+          <!-- <p class="heading lead  ">Do you want cancel?</p> -->
+        <a type="button" mdbBtn color="primary" class="waves-effect button4" mdbWavesEffect
+          routerLink="../../interviewee/{{userID}}" data-dismiss="modal">Yes</a>
+        <a type="button" mdbBtn color="primary" class="waves-effect button4" mdbWavesEffect (click)="deleteModal.hide()"
+          data-dismiss="modal">No</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>

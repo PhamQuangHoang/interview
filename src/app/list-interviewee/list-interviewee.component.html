@@ -1,0 +1,65 @@
+<!-- Card interviewee start -->
+<div class="list-interviewee" style="min-height: 50vh;" *ngIf="listInterviewee;else loading"
+     xmlns:http="http://www.w3.org/1999/xhtml">
+  <div class="itv_not_found" *ngIf="listInterviewee.length == 0">Can not find any interviewees</div>
+  <div *ngFor="let interviewee of listInterviewee |
+              paginate: config" class="row mb-2">
+
+    <div class="w-100 card-main" routerLink="./interviewee/{{interviewee.id}}">
+      <div class="w-100 h-100 p-0 m-0 row">
+        <div class="time-line d-none d-sm-block">
+          <!-- <div class="shape-timeline">
+            <img src="../../assets/image/time-line.svg" alt="">
+            <span class="text-upercase text-center font-weight-bold">New</span>
+          </div> -->
+        </div>
+        <div class="avatar-container d-flex justify-content-center align-items-center">
+          <div class="avatar white">
+            <div class="view overlay zoom">
+              <img [src]="interviewee.avatar ? [apiAvatar, interviewee.id, interviewee.avatar].join('/') : defaultAva"
+                alt="avatar mx-auto white" class=" rounded-circle img-fluid">
+            </div>
+          </div>
+        </div>
+        <div class="interviewee-detail-start d-flex flex-column justify-content-center align-items-start">
+          <h5 class="name-title">{{interviewee.fullname}}</h5>
+          <!-- custome tag -->
+          <div class="tag-container d-flex justify-content-around align-items-center mt-3">
+            <div class="tag d-flex justify-content-center mr-3" mdbTooltip="{{interviewee.position?.name ? interviewee.position.name :'not set' }}"><span
+                class="text-center">{{interviewee.position?.name ? interviewee.position.name :'not set' }}</span>
+            </div>
+            <!-- <div class="tag d-flex justify-content-center mr-3" mdbTooltip="{{interviewee.technique ? interviewee.technique : 'not set'}}"><span
+                class="text-center">{{interviewee.technique ? interviewee.technique : 'not set' }}</span>
+            </div> -->
+          </div>
+        </div>
+        <div class="interviewee-details-end d-flex justify-content-end align-items-center">
+          <div class="d-flex flex-column justify-content-center align-items-end mr-3">
+            <mdb-badge class="status"
+              [color]="interviewee.status === 'ON_HOLD' ? 'warning-color' : interviewee.status === 'PASSED' ? 'success-color' : interviewee.status === 'FAILED' ? 'danger-color' :  interviewee.status == 'INCOMING' ? 'info-color' : 'default-color'"
+              mdbWavesEffect>{{ interviewee.status.replace('_', ' ') }}</mdb-badge>
+            <div class="bottom-interviewee-detail-end d-flex justify-content-between align-items-center w-100 mt-3">
+              <div class="schedule mr-4">
+                <mdb-icon far icon="clock" class="mr-1"></mdb-icon>
+                {{interviewee.time_interview ? toDate(interviewee.time_interview) :'Not set yet' }}
+              </div>
+              <div class="location ">
+                <mdb-icon fas icon="map-marker-alt" class="mr-1"></mdb-icon>
+                {{interviewee.place_interview ? interviewee.place_interview : 'Not set yet'}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Card interviewee end -->
+<!-- Pagination start -->
+<div class="row justify-content-end mt-5" *ngIf="listInterviewee">
+  <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="pageChange($event)">
+  </pagination-controls>
+</div>
+<ng-template #loading>
+  <app-list-ghost></app-list-ghost>
+</ng-template>

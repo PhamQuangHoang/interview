@@ -1,0 +1,28 @@
+<div class="col-md-6">&emsp;</div>
+<div *ngIf="statusForm" class="col-md-6 p-0 status z-depth-1 col-12"  >
+  <mdb-badge class="w-100 h-100 " mdbWavesEffect  >
+    <form [formGroup]="statusForm" class=" h-100 w-100 d-flex flex-row " [ngClass]="statusColor === 'NEXT_ROUND' ? 'bg-default' : statusColor === 'FAILED' ? 'bg-danger' : statusColor === 'ON_HOLD' ? 'bg-warning' : ''" style="align-items: center;justify-content: space-evenly; ">
+      <div class="custom-control custom-radio">
+        <input (click)="changeStatus('NEXT_ROUND')" type="radio" formControlName="status" class="custom-control-input"
+          value="NEXT_ROUND" id="next_round" name="status" mdbInput>
+        <label [style.color]="statusColor === 'NEXT_ROUND' ? '#ffffff' : '' " class="custom-control-label title"
+          for="next_round">NEXT ROUND</label>
+      </div>
+      <!-- Default inline 1-->
+      <div class="custom-control custom-radio">
+        <input (click)="changeStatus('FAILED')" type="radio" formControlName="status"  class="custom-control-input"
+          value="FAILED" id="fail" name="status" mdbInput>
+        <label [style.color]="statusColor === 'FAILED' ? '#ffffff' : '' "
+          class="custom-control-label title"
+          for="fail">FAILED</label>
+      </div>
+      <!-- Default inline 1-->
+      <div class="custom-control custom-radio">
+        <input (click)="changeStatus('ON_HOLD')" type="radio" formControlName="status"  class="custom-control-input"
+          value="ON_HOLD" id="on_hold" name="status" mdbInput>
+        <label [style.color]="statusColor === 'ON_HOLD' ? '#ffffff' : '' " class="custom-control-label title"
+          for="on_hold">ON HOLD</label>
+      </div>
+    </form>
+  </mdb-badge>
+</div>

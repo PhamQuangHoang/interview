@@ -1,0 +1,46 @@
+<!-- Card interviewee start -->
+<div class="list-interviewee p-0" style="min-height: 40vh;" *ngIf="interviewees">
+    <div *ngFor="let interviewee of interviewees" class="row mb-2 p-0 pr-3 ">
+        <div class="w-100 card-main">
+            <div class="w-100 h-100 p-0 m-0 row">
+                <div class="time-line d-none d-sm-block">
+                    <!-- <div class="shape-timeline">
+                        <img src="../../assets/image/time-line.svg" alt="">
+                        <span class="text-upercase text-center font-weight-bold">New</span>
+                    </div> -->
+                </div>
+                <div class="avatar-container d-flex justify-content-center align-items-center">
+                    <div class="avatar white">
+                        <div class="view overlay zoom">
+                            <img src="https://fle.metu.edu.tr/en/system/files/nopic_0.png" alt="avatar mx-auto white"
+                                class=" rounded-circle img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="interviewee-detail-start d-flex flex-column justify-content-center align-items-start">
+                    <div class="name-title"></div>
+                    <!-- custome tag -->
+                    <div class="tag-container d-flex justify-content-around align-items-center mt-3">
+                        <div class="tag d-flex justify-content-center mr-3"><span class="text-center"></span>
+                        </div>
+                        <div class="tag d-flex justify-content-center mr-3"><span class="text-center"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="interviewee-details-end d-flex justify-content-end align-items-center mr-3">
+                    <div class="d-flex flex-column justify-content-center align-items-end mr-3">
+                        <mdb-badge class="status" [color]="muted" mdbWavesEffect></mdb-badge>
+                        <div
+                            class="bottom-interviewee-detail-end d-flex justify-content-end align-items-center w-100 mt-3">
+                            <div class="schedule mr-4">
+                            </div>
+                            <div class="location">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Card interviewee end -->

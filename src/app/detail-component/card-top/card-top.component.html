@@ -1,0 +1,14 @@
+<div class="card-top"></div>
+<div class="d-flex justify-content-center justify-content-lg-start">
+  <div class=" avatar view rgba-white-slight waves-light" mdbWavesEffect>
+    <img [src]="avatar ? API + '/api/view/' + id + '/' + avatar : defaultAva" class="rounded-circle img-thumbnail">
+    <a>
+      <div class="mask"></div>
+    </a>
+  </div>
+</div>
+<mdb-card-body class="d-flex justify-content-center card-heading justify-content-lg-end">
+  <mdb-card-title class="name-top heading-option">
+    <span class="text-name font-weight-bold">{{fullname}}</span>
+  </mdb-card-title>
+</mdb-card-body>
