@@ -30,7 +30,7 @@
     "angular-bootstrap-md": "^7.5.4",
     "angular-cookies": "^1.7.8",
     "angularx-flatpickr": "^6.1.0",
-    "chart.js": "^2.5.0",
+    "chart.js": "^2.9.4",
     "core-js": "^2.5.4",
     "express": "^4.17.1",
     "flatpickr": "^4.6.1",
